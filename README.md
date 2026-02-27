@@ -1,2 +1,20 @@
-# Biogas-Yield-Forecasting-using-Multivariate-LSTM
-This project applies a Multivariate Long Short-Term Memory (LSTM) to forecast biogas yield across 10 different feedstocks
+Brief Overview:
+- This project applies a Multivariate Long Short-Term Memory (LSTM) neural network to forecast biogas yield across 10 different feedstocks including Fish Waste, Pig Manure, Kitchen Food, Chicken Litter, Cassava, Bagasse, Energy Grass, Banana Shafts, Alcohol Waste and Municipal Residue.
+- Environmental and operational variables such as Water (L),	Diesel (L),	Electricity Use (kWh),	Temperature (C),	Humidity (%),	Rainfall (mm), and C/N Ratio were used as input features, reflecting the real world complexity of anaerobic digestion processes.
+
+Method:
+- The dataset was split into an 80/20 train-test ratio, with the model trained on 80% of the data and evaluated on the remaining 20%. Input features were scaled using MinMaxScaler to normalise all variables between 0 and 1 before being fed into the model. A lookback period of 7 days (n_input = 7) was used, meaning the model uses the previous 7 days of operational and environmental data to predict biogas yield. Model performance was evaluated using Root Mean Squared Error (RMSE) and Mean Absolute Percentage Error (MAPE) for both training and test sets across all 10 feedstocks.
+
+Results:
+- The model was configured with 200 neurons, a lookback period of 7 days and trained for 200 epochs. Performance was evaluated across all 10 feedstocks and the average test Mean Absolute Percentage Error (MAPE) across all feedstocks was approximately 12%, indicating that on average the model's predictions deviated by around 12% from the actual biogas yield values. Full Root Mean Squared Error (RMSE) and MAPE results for all individual feedstocks are compiled in the Biogas Summary Excel file included in this repository.
+
+Real World Implementation Note:
+- In a real world deployment, the future forecast loop would be updated to incorporate live sensor readings for each input feature. For example, instead of using zeros for unknown future values, real time data from sensor readings would be fed directly into the model at each prediction step.
+- Since real time sensor data was not available for this project, future feature values were set to zero as a placeholder, with only the predicted biogas value being carried forward into each subsequent prediction step. This is a known limitation of the current implementation and would be resolved in a production environment with live data pipelines.
+
+Graph plotting:
+- For each feedstock, the forecast plot displays the full historical actual biogas production in red, the test predictions in blue and the future forecast in green extending 336 days beyond the last known data point. Due to the daily frequency of the data, the plots appear noisy and irregular without a clear visible trend, which is expected for daily biogas production data that is influenced by numerous fluctuating operational and environmental variables. As a result, visual inspection of the plots alone is not a reliable indicator of model performance. The primary evaluation metric for this project was therefore Mean Absolute Percentage Error (MAPE), which provides a clear and interpretable percentage error regardless of the visual appearance of the forecast line.
+
+Key Insights:
+- The Multivariate LSTM model demonstrated consistent performance across all 10 feedstocks with an average test MAPE of approximately 12%. The inclusion of environmental and operational variables as input features reflects the real world factors that influence anaerobic digestion, making this approach more representative of actual biogas plant operations compared to univariate models.
+- However it is important to note that the accuracy of future yield predictions is directly dependent on the availability of live sensor readings. In a real world deployment, accurate forecasting beyond the known data period would require real time inputs from sensors monitoring operational and environmental conditions. Without live data, future feature values are estimated or set to zero, which limits the reliability of long term forecasts.
