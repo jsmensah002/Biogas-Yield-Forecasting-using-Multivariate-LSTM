@@ -13,7 +13,7 @@ Real World Implementation Note:
 - Since real time sensor data was not available for this project, future feature values were set to zero as a placeholder, with only the predicted biogas value being carried forward into each subsequent prediction step. This is a known limitation of the current implementation and would be resolved in a production environment with live data pipelines.
 
 Graph plotting:
-- For each feedstock, the forecast plot displays the full historical actual biogas production in red, the test predictions in blue and the future forecast in green extending 336 days beyond the last known data point. Due to the daily frequency of the data, the plots appear noisy and irregular without a clear visible trend, which is expected for daily biogas production data that is influenced by numerous fluctuating operational and environmental variables.
+- For each feedstock, the forecast plot displays the full historical actual biogas production in red, the test predictions in blue and the future forecast in green extending 336 days beyond the last known data point. Due to the daily frequency of the data, the plots appear noisy and irregular without a clear visible trend, which is expected for daily time series that is influenced by numerous fluctuating operational and environmental variables.
 - As a result, visual inspection of the plots alone is not a reliable indicator of model performance. The primary evaluation metric for this project was therefore Mean Absolute Percentage Error (MAPE), which provides a clear and interpretable percentage error regardless of the visual appearance of the forecast line.
 
 Key Insights:
