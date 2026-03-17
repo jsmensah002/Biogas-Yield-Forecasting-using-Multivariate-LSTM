@@ -1,4 +1,5 @@
 Brief Overview:
+- NOTE: Predictions assume ideal anaerobic digestion conditions.
 - This project applies a Multivariate Long Short-Term Memory (LSTM) neural network to forecast biogas yield across 10 different feedstocks including Fish Waste, Pig Manure, Kitchen Food, Chicken Litter, Cassava, Bagasse, Energy Grass, Banana Shafts, Alcohol Waste and Municipal Residue.
 - Environmental and operational variables such as Water (L),	Diesel (L),	Electricity Use (kWh),	Temperature (C),	Humidity (%),	Rainfall (mm), and C/N Ratio were used as input features, reflecting the real world complexity of anaerobic digestion processes.
 
